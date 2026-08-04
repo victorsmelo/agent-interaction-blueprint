@@ -4,9 +4,9 @@ card_type: event
 title: Cartão selecionado
 status: validating
 owner: Produtos Cartões
-emitted_by: ["[[PB-012-entender-ocorrencia|Entender ocorrência]]"]
-caused_by: ["[[EVT-001-perda-reportada|Perda reportada]]"]
-consumed_by: ["[[WF-004-bloquear-cartao|Bloquear cartão]]"]
+emitted_by: ["PB-012"]
+caused_by: ["EVT-001"]
+consumed_by: ["WF-004"]
 payload: [selected_card_id, incident_type, customer_confirmation, correlation_id]
 correlation_key: correlation_id
 ---
@@ -19,13 +19,13 @@ Registra que o cliente escolheu explicitamente um cartão elegível e que o work
 
 ## Pré-condições
 
-- [[VAR-001-is-authenticated|Cliente autenticado]] com nível forte.
-- [[VAR-021-active-cards|Cartões ativos]] carregados.
+- [Cliente autenticado](VAR-001-is-authenticated.md) com nível forte.
+- [Cartões ativos](VAR-021-active-cards.md) carregados.
 - `selected_card_id` corresponde a uma opção apresentada ao cliente.
 
 ## Estado posterior
 
 - `selected_card_id`: preenchido.
 - `customer_confirmation`: `false` até a confirmação imediatamente anterior à ação.
-- Próximo consumidor: [[WF-004-bloquear-cartao|Bloquear cartão]].
+- Próximo consumidor: [Bloquear cartão](WF-004-bloquear-cartao.md).
 

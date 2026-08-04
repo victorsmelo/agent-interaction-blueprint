@@ -6,12 +6,12 @@ status: draft
 event_type: exception
 severity: critical
 emitted_by:
-  - "[[TOOL-007-api-bloqueio|API de bloqueio]]"
+  - "TOOL-007"
 caused_by:
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "WF-004"
 consumed_by:
-  - "[[HO-003-cartoes-fraude|Cartões e fraude]]"
-  - "[[EVAL-006-resolucao-segura|Resolução segura]]"
+  - "HO-003"
+  - "EVAL-006"
 payload: [selected_card_id, correlation_id, idempotency_key, latency_ms, retry_count, occurred_at]
 correlation_key: correlation_id
 owner: Tecnologia de cartões
@@ -37,7 +37,7 @@ O limite de espera terminou sem um resultado conclusivo; o efeito real da opera�
 - Tratar o estado como `unknown`, nunca como sucesso ou falha definitiva.
 - Consultar status, se existir uma operação segura para isso.
 - Repetir somente com a mesma `idempotency_key` e conforme política aprovada.
-- Oferecer [[HO-003-cartoes-fraude]] ou canal emergencial.
+- Oferecer [HO-003-cartoes-fraude](HO-003-cartoes-fraude.md) ou canal emergencial.
 
 ## Variáveis selecionáveis
 

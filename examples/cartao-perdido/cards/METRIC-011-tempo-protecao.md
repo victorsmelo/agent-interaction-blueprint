@@ -6,12 +6,12 @@ status: draft
 metric_type: duration
 unit: seconds
 starts_at:
-  - "[[EVT-001-perda-reportada|Perda reportada]]"
+  - "EVT-001"
 ends_at:
-  - "[[EVT-003-bloqueio-confirmado|Bloqueio confirmado]]"
-  - "[[HO-003-cartoes-fraude|Handoff aceito por cartões e fraude]]"
+  - "EVT-003"
+  - "HO-003"
 related_evaluation:
-  - "[[EVAL-006-resolucao-segura|Resolução segura]]"
+  - "EVAL-006"
 owner: Operações e analytics
 ---
 
@@ -27,9 +27,9 @@ Tempo decorrido entre o relato de perda e a primeira proteção confirmada ou a 
 
 ## Início e fim
 
-- Início: `occurred_at` de [[EVT-001-perda-reportada]].
-- Fim primário: `completed_at` de [[EVT-003-bloqueio-confirmado]].
-- Fim alternativo: aceite comprovado de [[HO-003-cartoes-fraude]].
+- Início: `occurred_at` de [EVT-001-perda-reportada](EVT-001-perda-reportada.md).
+- Fim primário: `completed_at` de [EVT-003-bloqueio-confirmado](EVT-003-bloqueio-confirmado.md).
+- Fim alternativo: aceite comprovado de [HO-003-cartoes-fraude](HO-003-cartoes-fraude.md).
 
 ## Dimensões selecionáveis
 

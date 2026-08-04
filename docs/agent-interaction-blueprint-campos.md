@@ -57,7 +57,7 @@ Use estes valores como chips, dropdowns, propriedades ou stamps no FigJam. O obj
 | `DEC` | Decisão | `DEC-005` |
 | `OUT` | Resultado | `OUT-002` |
 
-O ID é estável. O título pode mudar sem quebrar referências. Para wikilinks, prefira `[[PB-012-entender-ocorrencia|Entender ocorrência]]`: o primeiro valor é o destino estável; o texto após `|` é o rótulo legível.
+O ID é estável. O título pode mudar sem quebrar referências. Nas relações estruturadas, use o ID; no texto, use um link Markdown relativo, como [Entender ocorrência](../examples/cartao-perdido/cards/PB-012-entender-ocorrencia.md).
 
 ## Biblioteca de variáveis predefinidas
 
@@ -185,7 +185,7 @@ Para cada variável selecionada, ainda devem ser definidos: `source`, `required_
 
 ## 5. Relacionamentos e cadeia de eventos
 
-Os wikilinks identificam os cartões; o nome da propriedade informa o significado da relação. Toda conexão de execução deve ter um verbo. Evite usar apenas `related_to`.
+Os IDs identificam os cartões; o nome da propriedade informa o significado da relação. Toda conexão de execução deve ter um verbo. Evite usar apenas `related_to`.
 
 ### 5.1 Relações do cartão
 
@@ -232,7 +232,7 @@ Um evento descreve algo que aconteceu e deve ser nomeado no passado: `Cartão se
 | Retenção e auditoria | [CONDICIONAL] | Registro, prazo e acesso ao evento. |
 | Owner | **[OBRIGATÓRIO]** | Domínio responsável pela definição do evento. |
 
-### 5.3 Modelo de propriedades e wikilinks
+### 5.3 Modelo de propriedades, IDs e links Markdown
 
 ```yaml
 ---
@@ -242,30 +242,19 @@ title: Entender ocorrência de cartão
 status: validating
 owner: Produtos Cartões
 
-relations:
-  triggered_by:
-    - "[[EVT-001-perda-reportada|Perda reportada]]"
-  emits:
-    - "[[EVT-002-cartao-selecionado|Cartão selecionado]]"
-  queries_kb:
-    - "[[KB-003-politica-cartoes|Política de cartões]]"
-  reads:
-    - "[[VAR-001-is-authenticated|Cliente autenticado]]"
-    - "[[VAR-021-active-cards|Cartões ativos]]"
-  routes_to:
-    - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
-  escalates_to:
-    - "[[HO-003-cartoes-fraude|Cartões e Fraude]]"
-  tested_by:
-    - "[[TEST-034-multiplos-cartoes|Cliente com múltiplos cartões]]"
-  evaluated_by:
-    - "[[EVAL-006-resolucao|Resolução]]"
-  measured_by:
-    - "[[METRIC-011-tempo-protecao|Tempo até proteção]]"
+triggered_by: [EVT-001]
+emits: [EVT-002]
+queries_kb: [KB-003]
+reads: [VAR-001, VAR-021]
+routes_to: [WF-004]
+escalates_to: [HO-003]
+tested_by: [TEST-034]
+evaluated_by: [EVAL-006]
+measured_by: [METRIC-011]
 ---
 ```
 
-No FigJam, mantenha os links tipados dentro do cartão como fonte da relação. Use conectores visuais apenas nas perspectivas em que a relação ajuda: cadeia principal, erros, dados, ferramentas, riscos ou qualidade.
+No frontmatter, mantenha IDs tipados como fonte da relação. No corpo do cartão, use links Markdown relativos para navegação no GitHub e no Obsidian. No FigJam, use conectores visuais apenas nas perspectivas em que a relação ajuda: cadeia principal, erros, dados, ferramentas, riscos ou qualidade.
 
 ## 6. Regras de roteamento
 
@@ -476,7 +465,7 @@ Um cenário não deve avançar para implementação sem que estes itens estejam 
 - [ ] Job do cliente e estado inicial.
 - [ ] Trigger, quando usar, quando não usar e rota esperada.
 - [ ] IDs estáveis e tipos de cartão selecionados a partir do catálogo.
-- [ ] Entradas, saídas, `on_success`, `on_error` e `on_timeout` relacionados por wikilinks tipados.
+- [ ] Entradas, saídas, `on_success`, `on_error` e `on_timeout` relacionados por IDs tipados.
 - [ ] Eventos críticos possuem `emitted_by`, `caused_by`, `consumed_by` e `payload`.
 - [ ] Resultado esperado e critério de sucesso.
 - [ ] Nível de risco, dados sensíveis, autenticação e confirmações.
@@ -573,26 +562,26 @@ owner: Produtos Cartões
 
 relations:
   triggered_by:
-    - "[[EVT-001-perda-reportada|Perda reportada]]"
+    - "[Perda reportada](../examples/cartao-perdido/cards/EVT-001-perda-reportada.md)"
   emits:
-    - "[[EVT-002-cartao-selecionado|Cartão selecionado]]"
+    - "[Cartão selecionado](../examples/cartao-perdido/cards/EVT-002-cartao-selecionado.md)"
   routes_to:
-    - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+    - "[Bloquear cartão](../examples/cartao-perdido/cards/WF-004-bloquear-cartao.md)"
   queries_kb:
-    - "[[KB-003-politica-cartoes|Política de cartões]]"
+    - "[Política de cartões](../examples/cartao-perdido/cards/KB-003-politica-cartoes.md)"
   reads:
-    - "[[VAR-001-is-authenticated|Cliente autenticado]]"
-    - "[[VAR-021-active-cards|Cartões ativos]]"
+    - "[Cliente autenticado](../examples/cartao-perdido/cards/VAR-001-is-authenticated.md)"
+    - "[Cartões ativos](../examples/cartao-perdido/cards/VAR-021-active-cards.md)"
   governed_by:
-    - "[[RISK-008-bloqueio-cartao-incorreto|Bloqueio do cartão incorreto]]"
+    - "[Bloqueio do cartão incorreto](../examples/cartao-perdido/cards/RISK-008-bloqueio-cartao-incorreto.md)"
   escalates_to:
-    - "[[HO-003-cartoes-fraude|Cartões e Fraude]]"
+    - "[Cartões e Fraude](../examples/cartao-perdido/cards/HO-003-cartoes-fraude.md)"
   tested_by:
-    - "[[TEST-034-multiplos-cartoes|Cliente com múltiplos cartões]]"
+    - "[Cliente com múltiplos cartões](../examples/cartao-perdido/cards/TEST-034-multiplos-cartoes.md)"
   evaluated_by:
-    - "[[EVAL-006-resolucao-segura|Resolução segura]]"
+    - "[Resolução segura](../examples/cartao-perdido/cards/EVAL-006-resolucao-segura.md)"
   measured_by:
-    - "[[METRIC-011-tempo-protecao|Tempo até proteção]]"
+    - "[Tempo até proteção](../examples/cartao-perdido/cards/METRIC-011-tempo-protecao.md)"
 ---
 ```
 
@@ -609,14 +598,14 @@ relations:
 #### Cadeia principal
 
 ```text
-[[EVT-001-perda-reportada|Perda reportada]]
-  → triggers → [[PB-012-entender-ocorrencia|Entender ocorrência]]
-  → emits → [[EVT-002-cartao-selecionado|Cartão selecionado]]
-  → triggers → [[WF-004-bloquear-cartao|Bloquear cartão]]
-  → uses_tool → [[TOOL-007-api-bloqueio|API de bloqueio]]
-  → on_success → [[EVT-003-bloqueio-confirmado|Bloqueio confirmado]]
-  → on_error → [[EVT-004-bloqueio-nao-confirmado|Bloqueio não confirmado]]
-  → on_timeout → [[EVT-005-timeout-bloqueio|Timeout ocorrido]]
+[Perda reportada](../examples/cartao-perdido/cards/EVT-001-perda-reportada.md)
+  → triggers → [Entender ocorrência](../examples/cartao-perdido/cards/PB-012-entender-ocorrencia.md)
+  → emits → [Cartão selecionado](../examples/cartao-perdido/cards/EVT-002-cartao-selecionado.md)
+  → triggers → [Bloquear cartão](../examples/cartao-perdido/cards/WF-004-bloquear-cartao.md)
+  → uses_tool → [API de bloqueio](../examples/cartao-perdido/cards/TOOL-007-api-bloqueio.md)
+  → on_success → [Bloqueio confirmado](../examples/cartao-perdido/cards/EVT-003-bloqueio-confirmado.md)
+  → on_error → [Bloqueio não confirmado](../examples/cartao-perdido/cards/EVT-004-bloqueio-nao-confirmado.md)
+  → on_timeout → [Timeout ocorrido](../examples/cartao-perdido/cards/EVT-005-timeout-bloqueio.md)
 ```
 
 ### 6. Roteamento

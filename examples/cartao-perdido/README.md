@@ -15,8 +15,8 @@ Este cenário ilustra uma interação de risco R2/R3: o agente entende a ocorrê
 
 ## Fluxo principal
 
-1. [[EVT-001-perda-reportada|Perda reportada]] torna [[PB-012-entender-ocorrencia|Entender ocorrência]] elegível.
-2. O playbook identifica o cartão e emite [[EVT-002-cartao-selecionado|Cartão selecionado]].
-3. [[WF-004-bloquear-cartao|Bloquear cartão]] chama [[TOOL-007-api-bloqueio|API de bloqueio]].
-4. O resultado é [[EVT-003-bloqueio-confirmado|confirmado]] ou tratado com [[HO-003-cartoes-fraude|handoff seguro]].
+1. [Perda reportada](cards/EVT-001-perda-reportada.md) torna [Entender ocorrência](cards/PB-012-entender-ocorrencia.md) elegível.
+2. O playbook identifica o cartão e emite [Cartão selecionado](cards/EVT-002-cartao-selecionado.md).
+3. [Bloquear cartão](cards/WF-004-bloquear-cartao.md) chama [API de bloqueio](cards/TOOL-007-api-bloqueio.md).
+4. O resultado é [confirmado](cards/EVT-003-bloqueio-confirmado.md) ou tratado com [handoff seguro](cards/HO-003-cartoes-fraude.md).
 

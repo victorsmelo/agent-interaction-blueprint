@@ -6,12 +6,12 @@ status: draft
 event_type: exception
 severity: high
 emitted_by:
-  - "[[TOOL-007-api-bloqueio|API de bloqueio]]"
+  - "TOOL-007"
 caused_by:
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "WF-004"
 consumed_by:
-  - "[[HO-003-cartoes-fraude|Cartões e fraude]]"
-  - "[[EVAL-006-resolucao-segura|Resolução segura]]"
+  - "HO-003"
+  - "EVAL-006"
 payload: [selected_card_id, tool_status, error_code, retry_count, correlation_id, idempotency_key, occurred_at]
 correlation_key: correlation_id
 owner: Operações de cartões
@@ -37,5 +37,5 @@ A ferramenta respondeu, mas não confirmou que o cartão foi bloqueado.
 
 - Não afirmar que o bloqueio ocorreu.
 - Explicar a situação em linguagem simples, sem expor detalhes internos.
-- Aplicar a política de repetição definida em [[WF-004-bloquear-cartao]].
-- Encaminhar para [[HO-003-cartoes-fraude]] quando não houver recuperação segura.
+- Aplicar a política de repetição definida em [WF-004-bloquear-cartao](WF-004-bloquear-cartao.md).
+- Encaminhar para [HO-003-cartoes-fraude](HO-003-cartoes-fraude.md) quando não houver recuperação segura.

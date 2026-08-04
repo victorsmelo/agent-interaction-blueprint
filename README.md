@@ -2,7 +2,7 @@
 
 Um modelo versionável para desenhar, especificar e avaliar interações de chatbots e agentes de IA em atendimento ao cliente.
 
-Ele usa Markdown, frontmatter YAML e wikilinks do Obsidian para conectar objetivos, fluxos determinísticos, eventos, ferramentas, conhecimento, variáveis, riscos, handoff, testes, avaliações e métricas.
+Ele usa Markdown relativo, frontmatter YAML e IDs estáveis para conectar objetivos, fluxos determinísticos, eventos, ferramentas, conhecimento, variáveis, riscos, handoff, testes, avaliações e métricas.
 
 ## Comece aqui
 
@@ -36,7 +36,7 @@ examples/             Jornadas preenchidas e navegáveis
 
 ## Navegação
 
-No Obsidian, os `[[wikilinks]]` formam o grafo de conhecimento. No GitHub, use os índices e links Markdown dos READMEs para navegar pelos arquivos; os wikilinks são preservados como formato canônico do vault.
+Links Markdown relativos são o formato canônico: funcionam no GitHub e também no Obsidian, incluindo navegação e Graph View. IDs no frontmatter preservam relações estruturadas, consultas e validações.
 
 ## Estado do modelo
 

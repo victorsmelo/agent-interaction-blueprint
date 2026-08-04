@@ -6,7 +6,7 @@ status: approved
 owner: Canais de Atendimento
 emitted_by: [Canal de atendimento]
 caused_by: [Mensagem inicial do cliente]
-consumed_by: ["[[PB-012-entender-ocorrencia|Entender ocorrência]]"]
+consumed_by: ["PB-012"]
 payload: [conversation_id, correlation_id, channel, locale, last_user_utterance]
 correlation_key: correlation_id
 ---
@@ -28,7 +28,7 @@ Nenhum cenário de cartões está ativo.
 
 ## Estado posterior
 
-O playbook [[PB-012-entender-ocorrencia|Entender ocorrência]] torna-se elegível.
+O playbook [Entender ocorrência](PB-012-entender-ocorrencia.md) torna-se elegível.
 
 ## Regras
 

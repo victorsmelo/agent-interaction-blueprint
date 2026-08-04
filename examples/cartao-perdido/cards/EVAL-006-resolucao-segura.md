@@ -4,14 +4,14 @@ card_type: evaluation
 title: Resolução segura
 status: draft
 evaluates:
-  - "[[PB-012-entender-ocorrencia|Entender ocorrência]]"
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "PB-012"
+  - "WF-004"
 consumes:
-  - "[[EVT-003-bloqueio-confirmado|Bloqueio confirmado]]"
-  - "[[EVT-004-bloqueio-nao-confirmado|Bloqueio não confirmado]]"
-  - "[[EVT-005-timeout-bloqueio|Timeout do bloqueio]]"
+  - "EVT-003"
+  - "EVT-004"
+  - "EVT-005"
 related_metric:
-  - "[[METRIC-011-tempo-protecao|Tempo até proteção]]"
+  - "METRIC-011"
 owner: Qualidade e IA
 ---
 

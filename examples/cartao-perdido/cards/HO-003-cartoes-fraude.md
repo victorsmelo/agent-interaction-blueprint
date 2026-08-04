@@ -5,10 +5,10 @@ title: Cartões e fraude
 status: draft
 destination: Fila especializada de cartões e fraude
 triggered_by:
-  - "[[EVT-004-bloqueio-nao-confirmado|Bloqueio não confirmado]]"
-  - "[[EVT-005-timeout-bloqueio|Timeout do bloqueio]]"
+  - "EVT-004"
+  - "EVT-005"
 related_workflow:
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "WF-004"
 owner: Atendimento especializado
 ---
 

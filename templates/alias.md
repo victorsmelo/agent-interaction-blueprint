@@ -2,7 +2,7 @@
 card_type: alias
 title: NOME ANTERIOR
 status: deprecated
-alias_of: "[[ID-CANONICO|Nome canônico]]"
+alias_of: ID-CANONICO
 ---
 
 # NOME ANTERIOR

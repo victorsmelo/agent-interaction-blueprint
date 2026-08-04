@@ -13,11 +13,19 @@ ROOT = Path(__file__).resolve().parents[1]
 CARD_DIRS = [ROOT / "examples"]
 REQUIRED = {"id", "card_type", "title", "status", "owner"}
 STATUSES = {"draft", "validating", "approved", "deprecated"}
-WIKILINK = re.compile(r"\[\[([^\]|#]+)")
 KEY = re.compile(r"^([A-Za-z_][A-Za-z0-9_-]*):")
+ID_REF = re.compile(r"\b([A-Z][A-Z0-9]*-\d+)\b")
+MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)#]+)(?:#[^)]*)?\)")
+RELATION_FIELDS = {
+    "alias_of", "caused_by", "consumed_by", "ends_at", "error_event", "escalates_to",
+    "evaluated_by", "evaluates", "governed_by", "measured_by", "queries_kb", "reads",
+    "related_evaluation", "related_metric", "related_workflow", "requires", "routes_to",
+    "starts_at", "success_event", "tested_by", "tests", "timeout_event", "triggered_by",
+    "used_by", "uses", "validates_risk", "emits",
+}
 
 
-def frontmatter(path: Path) -> dict[str, str]:
+def frontmatter(path: Path) -> tuple[dict[str, str], str]:
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---\n"):
         raise ValueError("frontmatter ausente")
@@ -25,8 +33,27 @@ def frontmatter(path: Path) -> dict[str, str]:
         raw = text.split("---\n", 2)[1]
     except IndexError as exc:
         raise ValueError("delimitador de frontmatter inválido") from exc
-    return {match.group(1): line.split(":", 1)[1].strip() for line in raw.splitlines()
-            if (match := KEY.match(line))}
+    return ({match.group(1): line.split(":", 1)[1].strip() for line in raw.splitlines()
+             if (match := KEY.match(line))}, raw)
+
+
+def relation_ids(raw: str) -> list[str]:
+    """Extrai IDs de propriedades de relação, incluindo listas YAML em múltiplas linhas."""
+    found: list[str] = []
+    active_key = ""
+    for line in raw.splitlines():
+        match = KEY.match(line)
+        if match:
+            active_key = match.group(1)
+            value = line.split(":", 1)[1]
+        elif line.startswith(" ") and active_key in RELATION_FIELDS:
+            value = line
+        else:
+            active_key = ""
+            continue
+        if active_key in RELATION_FIELDS:
+            found.extend(ID_REF.findall(value))
+    return found
 
 
 def main() -> int:
@@ -34,20 +61,34 @@ def main() -> int:
                    if path.parent.name == "cards")
     errors: list[str] = []
     ids: list[str] = []
-    stems = {path.stem for path in cards}
+    parsed: dict[Path, tuple[dict[str, str], str]] = {}
 
     for path in cards:
         rel = path.relative_to(ROOT)
         try:
-            meta = frontmatter(path)
+            meta, raw = frontmatter(path)
         except ValueError as exc:
             errors.append(f"{rel}: {exc}")
             continue
+        parsed[path] = (meta, raw)
+        if meta.get("card_type") != "alias" and meta.get("id"):
+            ids.append(meta["id"])
+
+    canonical_ids = set(ids)
+    duplicates = [identifier for identifier, count in Counter(ids).items() if count > 1]
+    if duplicates:
+        errors.append("IDs duplicados: " + ", ".join(sorted(duplicates)))
+
+    for path, (meta, raw) in parsed.items():
+        rel = path.relative_to(ROOT)
 
         card_type = meta.get("card_type")
         if card_type == "alias":
             if not meta.get("alias_of"):
                 errors.append(f"{rel}: alias_of é obrigatório para alias")
+            for identifier in relation_ids(raw):
+                if identifier not in canonical_ids:
+                    errors.append(f"{rel}: alias_of referencia ID inexistente: {identifier}")
             continue
 
         missing = REQUIRED - set(meta)
@@ -63,16 +104,16 @@ def main() -> int:
             for key in ("emitted_by", "consumed_by", "payload", "correlation_key"):
                 if key not in meta:
                     errors.append(f"{rel}: evento requer {key}")
-        if meta.get("id"):
-            ids.append(meta["id"])
+        for identifier in relation_ids(raw):
+            if identifier not in canonical_ids:
+                errors.append(f"{rel}: relação referencia ID inexistente: {identifier}")
 
-        for target in WIKILINK.findall(path.read_text(encoding="utf-8")):
-            if target not in stems:
-                errors.append(f"{rel}: wikilink sem alvo: {target}")
-
-    duplicates = [identifier for identifier, count in Counter(ids).items() if count > 1]
-    if duplicates:
-        errors.append("IDs duplicados: " + ", ".join(sorted(duplicates)))
+        for target in MARKDOWN_LINK.findall(path.read_text(encoding="utf-8")):
+            if target.startswith(("http:", "https:", "mailto:")):
+                continue
+            destination = (path.parent / target).resolve()
+            if not destination.exists():
+                errors.append(f"{rel}: link Markdown sem alvo: {target}")
 
     if errors:
         print("Blueprint inválido:")
@@ -84,4 +125,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

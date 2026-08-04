@@ -6,12 +6,12 @@ status: draft
 event_type: domain
 severity: info
 emitted_by:
-  - "[[TOOL-007-api-bloqueio|API de bloqueio]]"
+  - "TOOL-007"
 caused_by:
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "WF-004"
 consumed_by:
-  - "[[EVAL-006-resolucao-segura|Resolução segura]]"
-  - "[[METRIC-011-tempo-protecao|Tempo até proteção]]"
+  - "EVAL-006"
+  - "METRIC-011"
 payload: [selected_card_id, protocol_id, completed_at, correlation_id, idempotency_key]
 correlation_key: correlation_id
 owner: Operações de cartões
@@ -34,8 +34,8 @@ O sistema responsável confirmou que o cartão selecionado foi bloqueado.
 ## Consumidores esperados
 
 - A conversa, para informar conclusão e próximos passos.
-- [[EVAL-006-resolucao-segura]], para classificar o desfecho.
-- [[METRIC-011-tempo-protecao]], para encerrar a medição.
+- [EVAL-006-resolucao-segura](EVAL-006-resolucao-segura.md), para classificar o desfecho.
+- [METRIC-011-tempo-protecao](METRIC-011-tempo-protecao.md), para encerrar a medição.
 
 ## Regra de idempotência
 

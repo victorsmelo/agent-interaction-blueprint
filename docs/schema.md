@@ -20,11 +20,11 @@ Todos os cartões canônicos precisam declarar no frontmatter:
 
 ## Modelo de relações
 
-As relações ficam como propriedades YAML de primeiro nível, sempre com nomes de verbo explícitos. Seus valores podem ser um wikilink ou uma lista de wikilinks.
+As relações ficam como propriedades YAML de primeiro nível, sempre com nomes de verbo explícitos. Seus valores podem ser um ID ou uma lista de IDs.
 
 Exemplos: `triggered_by`, `emits`, `uses`, `reads`, `routes_to`, `consumed_by`, `governed_by`, `tested_by`, `evaluated_by` e `measured_by`.
 
-Não use uma propriedade genérica `relations`: ela dificulta validação, consultas e consistência entre tipos.
+Não use uma propriedade genérica `relations`: ela dificulta validação, consultas e consistência entre tipos. Use IDs nas relações estruturadas e links Markdown no corpo do cartão.
 
 ## Regras por tipo
 

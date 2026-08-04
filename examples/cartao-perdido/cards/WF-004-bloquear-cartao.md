@@ -5,25 +5,25 @@ title: Bloquear cartão
 status: draft
 risk_level: R2
 triggered_by:
-  - "[[EVT-002-cartao-selecionado|Cartão selecionado]]"
+  - "EVT-002"
 requires:
-  - "[[VAR-001-is-authenticated|Cliente autenticado]]"
-  - "[[VAR-021-active-cards|Cartões ativos]]"
+  - "VAR-001"
+  - "VAR-021"
 uses:
-  - "[[TOOL-007-api-bloqueio|API de bloqueio]]"
-success_event: "[[EVT-003-bloqueio-confirmado|Bloqueio confirmado]]"
-error_event: "[[EVT-004-bloqueio-nao-confirmado|Bloqueio não confirmado]]"
-timeout_event: "[[EVT-005-timeout-bloqueio|Timeout do bloqueio]]"
+  - "TOOL-007"
+success_event: "EVT-003"
+error_event: "EVT-004"
+timeout_event: "EVT-005"
 governed_by:
-  - "[[RISK-008-bloqueio-cartao-incorreto|Bloqueio do cartão incorreto]]"
+  - "RISK-008"
 escalates_to:
-  - "[[HO-003-cartoes-fraude|Cartões e fraude]]"
+  - "HO-003"
 tested_by:
-  - "[[TEST-034-multiplos-cartoes|Múltiplos cartões]]"
+  - "TEST-034"
 evaluated_by:
-  - "[[EVAL-006-resolucao-segura|Resolução segura]]"
+  - "EVAL-006"
 measured_by:
-  - "[[METRIC-011-tempo-protecao|Tempo até proteção]]"
+  - "METRIC-011"
 owner: Operações de cartões
 ---
 
@@ -47,7 +47,7 @@ Bloquear exatamente o cartão selecionado pelo cliente e comunicar apenas o resu
 3. Explicar efeito e reversibilidade do bloqueio.
 4. Solicitar confirmação explícita.
 5. Gerar `correlation_id` e `idempotency_key`.
-6. Chamar [[TOOL-007-api-bloqueio]].
+6. Chamar [TOOL-007-api-bloqueio](TOOL-007-api-bloqueio.md).
 7. Interpretar o resultado real da ferramenta.
 8. Emitir o evento correspondente e informar protocolo quando disponível.
 
@@ -56,7 +56,7 @@ Bloquear exatamente o cartão selecionado pelo cliente e comunicar apenas o resu
 - Nunca inferir qual cartão deve ser bloqueado.
 - Nunca declarar sucesso sem `blocked = true` retornado pela ferramenta.
 - Não repetir a operação com uma nova chave de idempotência após timeout.
-- Encaminhar falhas persistentes ou suspeita de fraude para [[HO-003-cartoes-fraude]].
+- Encaminhar falhas persistentes ou suspeita de fraude para [HO-003-cartoes-fraude](HO-003-cartoes-fraude.md).
 
 ## Variáveis selecionáveis
 

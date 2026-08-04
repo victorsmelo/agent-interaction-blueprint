@@ -13,8 +13,8 @@ data_classification: financial
 persistence: session
 masking: marca, tipo e quatro últimos dígitos
 allowed_consumers:
-  - "[[PB-012-entender-ocorrencia|Entender ocorrência]]"
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "PB-012"
+  - "WF-004"
 ---
 
 # VAR-021 — Cartões ativos

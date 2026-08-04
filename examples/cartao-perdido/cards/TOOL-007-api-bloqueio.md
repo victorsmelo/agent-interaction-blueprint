@@ -5,12 +5,12 @@ title: API de bloqueio
 status: draft
 system: Plataforma de cartões
 used_by:
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
-success_event: "[[EVT-003-bloqueio-confirmado|Bloqueio confirmado]]"
-error_event: "[[EVT-004-bloqueio-nao-confirmado|Bloqueio não confirmado]]"
-timeout_event: "[[EVT-005-timeout-bloqueio|Timeout do bloqueio]]"
+  - "WF-004"
+success_event: "EVT-003"
+error_event: "EVT-004"
+timeout_event: "EVT-005"
 governed_by:
-  - "[[RISK-008-bloqueio-cartao-incorreto|Bloqueio do cartão incorreto]]"
+  - "RISK-008"
 owner: Tecnologia de cartões
 ---
 
@@ -43,9 +43,9 @@ Solicitar o bloqueio de um cartão e retornar uma evidência inequívoca do resu
 
 ## Política de resultado
 
-- `blocked = true`: emitir [[EVT-003-bloqueio-confirmado]].
-- rejeição ou erro confirmado: emitir [[EVT-004-bloqueio-nao-confirmado]].
-- ausência de resposta no limite: emitir [[EVT-005-timeout-bloqueio]].
+- `blocked = true`: emitir [EVT-003-bloqueio-confirmado](EVT-003-bloqueio-confirmado.md).
+- rejeição ou erro confirmado: emitir [EVT-004-bloqueio-nao-confirmado](EVT-004-bloqueio-nao-confirmado.md).
+- ausência de resposta no limite: emitir [EVT-005-timeout-bloqueio](EVT-005-timeout-bloqueio.md).
 - Status `unknown` nunca pode ser apresentado como sucesso.
 
 ## Variáveis selecionáveis

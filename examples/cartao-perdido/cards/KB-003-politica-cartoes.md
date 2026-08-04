@@ -7,8 +7,8 @@ owner: Gestão de Conteúdo de Cartões
 source_authority: [Produtos Cartões, Jurídico]
 metadata: [produto, segmento, bandeira, canal, idioma, vigencia]
 used_by:
-  - "[[PB-012-entender-ocorrencia|Entender ocorrência]]"
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "PB-012"
+  - "WF-004"
 ---
 
 # KB-003 — Política de cartões

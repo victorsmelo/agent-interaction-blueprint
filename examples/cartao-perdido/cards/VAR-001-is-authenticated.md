@@ -13,8 +13,8 @@ data_classification: authentication
 persistence: session
 masking: não exibir
 allowed_consumers:
-  - "[[PB-012-entender-ocorrencia|Entender ocorrência]]"
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
+  - "PB-012"
+  - "WF-004"
 ---
 
 # VAR-001 — Cliente autenticado

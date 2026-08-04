@@ -18,11 +18,10 @@ O blueprint representa um grafo dirigido: cada relação registra o papel de ori
 
 ## Wikilinks e GitHub
 
-- `[[ID-arquivo|Rótulo]]` é a referência canônica e permite Graph View no Obsidian.
-- Índices README usam links Markdown relativos para permanecerem navegáveis no GitHub.
-- Não substitua IDs no nome do arquivo; atualize apenas o rótulo depois de `|` quando o título mudar.
+- As relações estruturadas usam IDs estáveis, como `uses: [TOOL-007]`.
+- O corpo dos cartões usa links Markdown relativos, como `[API de bloqueio](../examples/cartao-perdido/cards/TOOL-007-api-bloqueio.md)`; eles funcionam no GitHub e no Obsidian.
+- Não substitua IDs no nome do arquivo; atualize o rótulo visível do link quando o título mudar.
 
 ## Cadeias de eventos
 
 Cada evento deve trazer `correlation_key`. Para efeitos sensíveis, a ferramenta recebe e propaga `correlation_id` e `idempotency_key`; sucesso, erro e timeout tornam-se eventos distintos, evitando declarar um resultado que não foi confirmado.
-

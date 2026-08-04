@@ -5,11 +5,11 @@ title: Múltiplos cartões
 status: draft
 priority: blocking
 tests:
-  - "[[PB-012-entender-ocorrencia|Entender ocorrência]]"
-  - "[[WF-004-bloquear-cartao|Bloquear cartão]]"
-  - "[[TOOL-007-api-bloqueio|API de bloqueio]]"
+  - "PB-012"
+  - "WF-004"
+  - "TOOL-007"
 validates_risk:
-  - "[[RISK-008-bloqueio-cartao-incorreto|Bloqueio do cartão incorreto]]"
+  - "RISK-008"
 owner: QA conversacional
 ---
 
@@ -43,7 +43,7 @@ Verificar que o agente desambigua, confirma e bloqueia somente o cartão escolhi
 - O `selected_card_id` corresponde à escolha feita.
 - A chamada ocorre somente após confirmação explícita.
 - Apenas o cartão escolhido é bloqueado.
-- Sucesso só é comunicado depois de [[EVT-003-bloqueio-confirmado]].
+- Sucesso só é comunicado depois de [EVT-003-bloqueio-confirmado](EVT-003-bloqueio-confirmado.md).
 
 ## Variações selecionáveis
 
