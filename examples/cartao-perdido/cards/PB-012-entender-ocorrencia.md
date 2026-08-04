@@ -7,19 +7,18 @@ owner: Produtos Cartões
 treatment_type: agentic
 risk_level: R2-sensitive
 channels: [mobile_app, web]
-relations:
-  triggered_by: ["[[EVT-001-perda-reportada|Perda reportada]]"]
-  emits: ["[[EVT-002-cartao-selecionado|Cartão selecionado]]"]
-  queries_kb: ["[[KB-003-politica-cartoes|Política de cartões]]"]
-  reads:
-    - "[[VAR-001-is-authenticated|Cliente autenticado]]"
-    - "[[VAR-021-active-cards|Cartões ativos]]"
-  routes_to: ["[[WF-004-bloquear-cartao|Bloquear cartão]]"]
-  governed_by: ["[[RISK-008-bloqueio-cartao-incorreto|Bloqueio do cartão incorreto]]"]
-  escalates_to: ["[[HO-003-cartoes-fraude|Cartões e Fraude]]"]
-  tested_by: ["[[TEST-034-multiplos-cartoes|Cliente com múltiplos cartões]]"]
-  evaluated_by: ["[[EVAL-006-resolucao-segura|Resolução segura]]"]
-  measured_by: ["[[METRIC-011-tempo-protecao|Tempo até proteção]]"]
+triggered_by: ["[[EVT-001-perda-reportada|Perda reportada]]"]
+emits: ["[[EVT-002-cartao-selecionado|Cartão selecionado]]"]
+queries_kb: ["[[KB-003-politica-cartoes|Política de cartões]]"]
+reads:
+  - "[[VAR-001-is-authenticated|Cliente autenticado]]"
+  - "[[VAR-021-active-cards|Cartões ativos]]"
+routes_to: ["[[WF-004-bloquear-cartao|Bloquear cartão]]"]
+governed_by: ["[[RISK-008-bloqueio-cartao-incorreto|Bloqueio do cartão incorreto]]"]
+escalates_to: ["[[HO-003-cartoes-fraude|Cartões e Fraude]]"]
+tested_by: ["[[TEST-034-multiplos-cartoes|Cliente com múltiplos cartões]]"]
+evaluated_by: ["[[EVAL-006-resolucao-segura|Resolução segura]]"]
+measured_by: ["[[METRIC-011-tempo-protecao|Tempo até proteção]]"]
 ---
 
 # PB-012 — Entender ocorrência de cartão
@@ -59,4 +58,3 @@ Compreender se houve perda, roubo, ausência temporária de posse ou suspeita de
 
 - Cartão selecionado: emitir [[EVT-002-cartao-selecionado|Cartão selecionado]].
 - Falta de confiança, falha de autenticação ou fraude crítica: encaminhar para [[HO-003-cartoes-fraude|Cartões e Fraude]].
-

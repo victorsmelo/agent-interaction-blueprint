@@ -12,6 +12,8 @@ caused_by:
 consumed_by:
   - "[[EVAL-006-resolucao-segura|Resolução segura]]"
   - "[[METRIC-011-tempo-protecao|Tempo até proteção]]"
+payload: [selected_card_id, protocol_id, completed_at, correlation_id, idempotency_key]
+correlation_key: correlation_id
 owner: Operações de cartões
 ---
 
@@ -38,4 +40,3 @@ O sistema responsável confirmou que o cartão selecionado foi bloqueado.
 ## Regra de idempotência
 
 Eventos com a mesma combinação de `selected_card_id` e `idempotency_key` representam o mesmo resultado e não devem duplicar efeitos.
-

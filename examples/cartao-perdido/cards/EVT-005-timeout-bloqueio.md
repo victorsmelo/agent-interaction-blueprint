@@ -12,6 +12,8 @@ caused_by:
 consumed_by:
   - "[[HO-003-cartoes-fraude|Cartões e fraude]]"
   - "[[EVAL-006-resolucao-segura|Resolução segura]]"
+payload: [selected_card_id, correlation_id, idempotency_key, latency_ms, retry_count, occurred_at]
+correlation_key: correlation_id
 owner: Tecnologia de cartões
 ---
 
@@ -44,4 +46,3 @@ O limite de espera terminou sem um resultado conclusivo; o efeito real da opera�
 | `customer_message` | `temporary_issue`, `status_unknown`, `emergency_handoff` |
 | `next_action` | `check_status`, `retry_same_key`, `handoff` |
 | `urgency` | `normal`, `high`, `critical` |
-

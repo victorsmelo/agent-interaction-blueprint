@@ -12,6 +12,8 @@ caused_by:
 consumed_by:
   - "[[HO-003-cartoes-fraude|Cartões e fraude]]"
   - "[[EVAL-006-resolucao-segura|Resolução segura]]"
+payload: [selected_card_id, tool_status, error_code, retry_count, correlation_id, idempotency_key, occurred_at]
+correlation_key: correlation_id
 owner: Operações de cartões
 ---
 
@@ -37,4 +39,3 @@ A ferramenta respondeu, mas não confirmou que o cartão foi bloqueado.
 - Explicar a situação em linguagem simples, sem expor detalhes internos.
 - Aplicar a política de repetição definida em [[WF-004-bloquear-cartao]].
 - Encaminhar para [[HO-003-cartoes-fraude]] quando não houver recuperação segura.
-
